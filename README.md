@@ -1,4 +1,4 @@
-# e-commerce-app
+# e-comm-frontend
 
 Simple project to understand the Angular framework for my inventory management project
 
