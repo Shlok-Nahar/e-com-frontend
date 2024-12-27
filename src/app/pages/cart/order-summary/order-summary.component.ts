@@ -6,28 +6,21 @@ import { PrimaryButtonComponent } from '../../../components/primary-button/prima
   selector: 'app-order-summary',
   imports: [PrimaryButtonComponent],
   template: `
-    <div class="bg-slate-100 p-6 rounded-xl shadow-xl border">
-      <h2 class="text-2xl">Order Summary</h2>
+    <div class="bg-slate-100 p-6 rounded-xl shadow-xl border max-w-2xl w-full mx-auto">
+      <h2 class="text-xl font-bold mb-4">Order Summary</h2>
       <div class="flex flex-col gap-4">
-        <div class="flex gap-4">
+        <div class="flex justify-between items-center">
           <span class="text-lg">Total</span>
           <span class="text-lg font-bold">{{ '$ ' + total() }}</span>
         </div>
-        <app-primary-button label="Proceed to checkout" />
+        <app-primary-button label="Proceed to checkout" class="w-full" />
       </div>
     </div>
-  `,
-  styles: ``,
+  `
 })
 export class OrderSummaryComponent {
   cartService = inject(CartService);
-
   total = computed(() => {
-    let total = 0;
-    for (const item of this.cartService.cart()) {
-      total += item.price;
-    }
-
-    return total;
+    return this.cartService.cart().reduce((sum, item) => sum + item.price, 0);
   });
 }

@@ -8,7 +8,7 @@ import { Product } from '../../products-list/products-list.component';
   imports: [ButtonComponent],
   template: `
     <div
-      class="bg-white shadow-md border rounded-xl p-6 flex gap-4 items-center"
+      class="bg-white shadow-md border rounded-xl p-4 flex gap-4 items-center max-w-2xl w-full mx-auto"
     >
       <img [src]="item().image" class="w-[50px] h-[50px] object-contain" />
       <div class="flex flex-col">
@@ -19,13 +19,12 @@ import { Product } from '../../products-list/products-list.component';
       <app-button
         label="Remove"
         (btnClicked)="cartService.removeFromCart(item())"
+        class="text-sm"
       />
     </div>
-  `,
-  styles: ``,
+  `
 })
 export class CartItemComponent {
   item = input.required<Product>();
-
   cartService = inject(CartService);
 }
